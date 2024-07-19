@@ -1,0 +1,40 @@
+# Ignore Python bytecodes, virtual environments, and other generated files
+*.pyc
+*.pyo
+/auth/auth/__pycache__/
+/auth/users/__pycache__/
+env/
+venv/
+
+# Ignore static files directory (if managed separately)
+/staticfiles/
+
+# Ignore media files directory (user-uploaded content)
+/media/
+
+# Ignore Django local settings (keep your settings in a separate file)
+/auth/auth/settings.py
+
+# Ignore IDE or editor-specific files
+.vscode/
+.idea/
+
+# Ignore logs and other generated files
+*.log
+
+# Ignore pipenv or pip freeze requirements
+Pipfile
+Pipfile.lock
+
+# Ignore PostgreSQL database configuration
+*.postgres
+*.psql
+*.pg_dump
+
+# Ignore environment-specific settings
+/.env
+
+# Ignore backup files
+*~
+
+*.rest
