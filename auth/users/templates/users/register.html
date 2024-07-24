@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block js %}
+<script src="{% static 'scripts/register.js' %}" defer></script>
+{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Register Page</h1>
+
+    <div class="error-message"></div>
+
+    <form action="" method="POST" class="form">
+        {% csrf_token %}
+
+        <label for="username">Name</label>
+        <input type="text" name="name" id="username">
+        <label for="mail">Email</label>
+        <input type="email" name="email" id="mail">
+        <label for="pass">Password</label>
+        <input type="password" name="password" id="pass">
+        <input type="submit">
+    </form>
+{% endblock %}

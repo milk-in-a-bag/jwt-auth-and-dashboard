@@ -62,3 +62,12 @@ class UserView(APIView):
         serializer = UserSerializer(user)
 
         return Response(serializer.data)
+    
+def home(request):
+    return render(request, 'users/home.html')
+
+def signup(request):
+    return render(request, 'users/register.html')
+
+def login(request):
+    return render(request, 'users/login.html')
