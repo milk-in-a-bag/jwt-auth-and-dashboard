@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block js %}
+    <script src="{% static 'scripts/login.js' %}" defer></script>
+{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Login Page</h1>
+
+    <p class="error-message"></p>
+
+    <form action="" method="POST" class="form">
+        {% csrf_token %}
+
+        <label for="mail">Email</label>
+        <input type="email" name="email" id="mail">
+        <label for="pass">Password</label>
+        <input type="password" name="password" id="pass">
+        <input type="submit">
+    </form>
+{% endblock %}

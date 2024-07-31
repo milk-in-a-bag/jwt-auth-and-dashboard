@@ -1,6 +1,10 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock %}
+{% block js %}
+<script src="{% static 'scripts/home.js' %}" defer></script>
+{% endblock %}
 
 {% block body %}
     <h1>Welcome to the Home Page</h1>

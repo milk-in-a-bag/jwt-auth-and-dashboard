@@ -1,0 +1,24 @@
+*{
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body{
+  background-color: #dadada;
+}
+
+.form{
+  background-color: #ffffff;
+  display: grid;
+  place-items: center;
+  display: inline-block;
+  padding: 20px;
+  width: 500px;
+}
+
+input{
+  display: block;
+  margin-bottom: 5px;
+}

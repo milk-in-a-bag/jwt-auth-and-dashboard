@@ -1,10 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
-from .models import *
-from .serializers import *
-import jwt, datetime
+from .models import User
+from .serializers import UserSerializer
+import jwt
+import datetime
+from django.conf import settings
+from functools import wraps
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -13,7 +17,6 @@ class RegisterView(APIView):
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-
         return Response(serializer.data)
     
 class LoginView(APIView):
@@ -35,13 +38,15 @@ class LoginView(APIView):
             'iat': datetime.datetime.now(datetime.timezone.utc),
         }
 
-        token = jwt.encode(payload, 'secret', algorithm='HS256')
+        token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
 
         return Response({
             'message': 'Successfully authenticated!',
             'jwt': token,
         })
     
+
+    '''
 class UserView(APIView):
     def get(self, request):
         auth_header = request.headers.get('Authorization')
@@ -51,7 +56,7 @@ class UserView(APIView):
 
         try:
             token = auth_header.split(' ')[1]
-            payload = jwt.decode(token, 'secret', algorithms=['HS256'])
+            payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
         except (jwt.ExpiredSignatureError, IndexError):
             raise AuthenticationFailed('Unauthenticated')
         
@@ -60,9 +65,30 @@ class UserView(APIView):
             raise AuthenticationFailed('User not found')
 
         serializer = UserSerializer(user)
-
         return Response(serializer.data)
+        
+def token_required(view_func):
+    @wraps(view_func)
+    def _wrapped_view(request, *args, **kwargs):
+        auth_header = request.headers.get('Authorization')
+
+        if not auth_header:
+            return JsonResponse({'error': 'Unauthenticated'}, status=401)
+
+        try:
+            token = auth_header.split(' ')[1]
+            payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+        except (jwt.ExpiredSignatureError, jwt.InvalidTokenError, IndexError):
+            return JsonResponse({'error': 'Unauthenticated'}, status=401)
+        
+        request.user_id = payload['id']
+        return view_func(request, *args, **kwargs)
     
+    return _wrapped_view
+
+@token_required
+'''
+
 def home(request):
     return render(request, 'users/home.html')
 

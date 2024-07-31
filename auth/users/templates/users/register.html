@@ -3,6 +3,10 @@
 
 {% block title %}Register{% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/register.css' %}">
+{% endblock %}
+
 {% block js %}
 <script src="{% static 'scripts/register.js' %}" defer></script>
 {% endblock %}
@@ -10,7 +14,10 @@
 {% block body %}
     <h1>Welcome to the Register Page</h1>
 
-    <div class="error-message"></div>
+    <p class="error-message">
+    </p>
+
+    <p>Signup to Qerp</p>
 
     <form action="" method="POST" class="form">
         {% csrf_token %}
@@ -23,4 +30,6 @@
         <input type="password" name="password" id="pass">
         <input type="submit">
     </form>
+
+    <p>Already have an account? Login <a href="{% url 'login' %}">here</a></p>
 {% endblock %}
