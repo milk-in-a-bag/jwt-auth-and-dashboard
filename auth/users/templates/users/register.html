@@ -12,24 +12,24 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Welcome to the Register Page</h1>
+    <h1 class="rtext heading">Welcome to the Register Page</h1>
 
     <p class="error-message">
     </p>
 
-    <p>Signup to Qerp</p>
+    <p class="rtext stext">Signup to Qerp</p>
 
     <form action="" method="POST" class="form">
         {% csrf_token %}
 
-        <label for="username">Name</label>
+        <label for="username">Name:</label>
         <input type="text" name="name" id="username">
-        <label for="mail">Email</label>
+        <label for="mail">Email:</label>
         <input type="email" name="email" id="mail">
-        <label for="pass">Password</label>
+        <label for="pass">Password:</label>
         <input type="password" name="password" id="pass">
-        <input type="submit">
+        <input type="submit" class="submit">
     </form>
 
-    <p>Already have an account? Login <a href="{% url 'login' %}">here</a></p>
+    <p class="rtext login">Already have an account? Login <a href="{% url 'login' %}">here</a></p>
 {% endblock %}

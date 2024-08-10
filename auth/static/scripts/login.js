@@ -31,7 +31,11 @@ function handleSubmit(event) {
     localStorage.setItem('token', token);
 
     // Make a GET request to the user endpoint with the token
-    fetchUser(token);
+    //fetchUser(token);
+    errorMessageEl.textContent = '';
+
+    // Redirect the user to the dashboard page
+    window.location.href = 'http://127.0.0.1:8000';
   })
   .catch(error => {
     console.error(error);
@@ -61,9 +65,3 @@ function fetchUser(token) {
   });
 }
 */
-
-fetch('http://127.0.0.1:8000/', {
-  headers: {
-    'Authorization': `Bearer ${token}`,
-  },
-});

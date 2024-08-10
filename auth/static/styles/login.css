@@ -1,0 +1,66 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+body{
+    background-color: #dadada;
+    overflow: hidden;
+}
+
+.ltext{
+    text-align: center;
+}
+
+.heading{
+    position: relative;
+    top: 50px;
+}
+
+.welcome{
+    position: relative;
+    top: 60px;
+}
+
+.form{
+    background-color: #ffffff;
+    padding: 20px;
+    width: 350px;
+    margin: 70px auto;
+    border-radius: 10px;
+}
+
+input{
+    display: block;
+    width: 100%;
+    outline: none;
+}
+
+.submit{
+    padding: 10px 0;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+}
+
+#mail, #pass{
+    height: 30px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+}
+
+.login{
+    background-color: dadada;
+    width: 350px;
+    margin: auto;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px, solid, #ffffff;
+    position: relative;
+    bottom: 45px;
+}

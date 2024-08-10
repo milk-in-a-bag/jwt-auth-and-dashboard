@@ -9,6 +9,9 @@ import datetime
 from django.conf import settings
 from functools import wraps
 from django.http import JsonResponse
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 # Create your views here.
 
@@ -44,8 +47,23 @@ class LoginView(APIView):
             'message': 'Successfully authenticated!',
             'jwt': token,
         })
-    
 
+class ValidateTokenView(APIView):
+    def post(self, request):
+        token = request.headers.get('Authorization')
+        if token:
+            try:
+                token = token.split(' ')[1]  # Remove 'Bearer ' from the token
+                token_obj = Token.objects.get(key=token)
+                user = token_obj.user
+                if user.is_active:
+                    return Response({'valid': True})
+                else:
+                    return Response({'valid': False})
+            except Token.DoesNotExist:
+                return Response({'valid': False})
+        else:
+            return Response({'valid': False})
     '''
 class UserView(APIView):
     def get(self, request):
@@ -79,7 +97,7 @@ def token_required(view_func):
             token = auth_header.split(' ')[1]
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
         except (jwt.ExpiredSignatureError, jwt.InvalidTokenError, IndexError):
-            return JsonResponse({'error': 'Unauthenticated'}, status=401)
+            return JsonResponse({'error': 'Unauthenticated'}, status=401)`
         
         request.user_id = payload['id']
         return view_func(request, *args, **kwargs)
