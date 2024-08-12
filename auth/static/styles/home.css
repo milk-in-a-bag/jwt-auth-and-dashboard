@@ -68,6 +68,10 @@ body{
     color: #000000;
 }
 
+.left-right a.active{
+    color: #000000;
+}
+
 
 /* Dashboard */
 
@@ -81,18 +85,21 @@ body{
 
 .header-right{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 26%;
 }
 
 .date{
     display: flex;
     align-items: center;
-    width: 90%;
+    width: 60%;
     justify-content: space-around;
-    margin: 0 10px;
     border: 1px solid #f5f5f5;
     border-radius: 5px;
+}
+
+.date p{
+    font-size: 14px;
 }
 
 .header-button button{
@@ -100,7 +107,11 @@ body{
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background-color: #939185;
+    background-color: #f5f5f5;
+}
+
+.header-button button:hover{
+    background-color: #000000;
     color: #f5f5f5;
 }
 
@@ -120,8 +131,19 @@ body{
 
 .mini-nav a{
     text-decoration: none;
+    color: #939185;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.mini-nav a:hover{
     color: #000000;
-    padding: 0 5px;
+}
+
+.mini-nav a.active{
+    color: #000000;
+    background-color: #dadada;
+    border-radius: 3px;
 }
 
 /* Card styles */
@@ -139,6 +161,12 @@ body{
     padding: 10px;
     margin-top: 20px;
     cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card:hover{
+    position: relative;
+    bottom: 5px;
 }
 
 .card-top{
@@ -181,12 +209,21 @@ body{
 
 .recent-header p{
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .sale{
     display: grid;
     grid-template-columns: 0.1fr 1fr 1fr;
     margin-bottom: 10px;
+}
+
+.person p{
+    font-size: 14px;
+}
+
+.email{
+    color: #939185;
 }
 
 .price{

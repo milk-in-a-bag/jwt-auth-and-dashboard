@@ -1,5 +1,4 @@
 const token = localStorage.getItem('token');
-console.log("Hello world!");
 console.log(token);
 
 fetch('http://127.0.0.1:8000', {
@@ -12,6 +11,8 @@ fetch('http://127.0.0.1:8000', {
     window.location.href = 'http://127.0.0.1:8000/signin';
   }
   */
+
+/* graph script */
 
   const ctx = document.getElementById('myChart');
 
@@ -33,3 +34,33 @@ fetch('http://127.0.0.1:8000', {
       }
     }
   });
+
+
+/* date script */
+
+const datep = document.querySelector('.datep')
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const today = new Date();
+const formattedDate = today.toLocaleDateString('en-GB', options);
+
+datep.innerHTML = formattedDate
+
+/* toggle links script */
+
+const links = document.querySelectorAll('.left-right a');
+
+    links.forEach(link => {
+        link.addEventListener('click', function() {
+            links.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+const minilinks = document.querySelectorAll('.mini-nav a');
+
+minilinks.forEach(minilink => {
+        minilink.addEventListener('click', function() {
+            minilinks.forEach(minilink => minilink.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
