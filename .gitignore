@@ -3,6 +3,7 @@
 *.pyo
 /auth/auth/__pycache__/
 /auth/users/__pycache__/
+/auth/api/__pycache__/
 env/
 venv/
 
