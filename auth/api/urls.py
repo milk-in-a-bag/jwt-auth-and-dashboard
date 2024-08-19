@@ -1,27 +1,26 @@
-from django.urls import path
-from .views import SystemSettingsList, SystemSettingsDetail, EmployeeList, EmployeeDetail, InventoryList, InventoryDetail, ProjectList, ProjectDetail, CustomerList, CustomerDetail, CategoryList, CategoryDetail, QuotationsList, QuotationsDetail, QuotationItemsList, QuotationItemsDetail, InvoicesList, InvoicesDetail, InvoiceItemsList, InvoiceItemsDetail, TimeSheetList, TimeSheetDetail
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import (
+    SystemSettingsViewSet, EmployeeViewSet, InventoryViewSet,
+    ProjectViewSet, CustomerViewSet, CategoryViewSet, QuotationViewSet,
+    QuotationItemsViewSet, InvoicesViewSet, InvoiceItemsViewSet, TimesheetViewSet
+)
 
+# Create a router and register all viewsets
+router = DefaultRouter()
+router.register(r'systemsettings', SystemSettingsViewSet, basename='systemsettings')
+router.register(r'employees', EmployeeViewSet, basename='employees')
+router.register(r'inventory', InventoryViewSet, basename='inventory')
+router.register(r'projects', ProjectViewSet, basename='projects')
+router.register(r'customers', CustomerViewSet, basename='customers')
+router.register(r'categories', CategoryViewSet, basename='categories')
+router.register(r'quotations', QuotationViewSet, basename='quotations')
+router.register(r'quotationitems', QuotationItemsViewSet, basename='quotationitems')
+router.register(r'invoices', InvoicesViewSet, basename='invoices')
+router.register(r'invoiceitems', InvoiceItemsViewSet, basename='invoiceitems')
+router.register(r'timesheets', TimesheetViewSet, basename='timesheets')
+
+# Include the router-generated URL patterns
 urlpatterns = [
-    path('systemsettings/', SystemSettingsList.as_view()),
-     path('systemsettings/<int:pk>/', SystemSettingsDetail.as_view()),
-    path('employee/', EmployeeList.as_view()),
-    path('employee/<int:pk>/', EmployeeDetail.as_view()),
-    path('inventory/', InventoryList.as_view()),
-    path('inventory/<int:pk>/', InventoryDetail.as_view()),
-    path('project/', ProjectList.as_view()),
-    path('project/<int:pk>/', ProjectDetail.as_view()),
-    path('customer/', CustomerList.as_view()),
-    path('customer/<int:pk>/', CustomerDetail.as_view()),
-    path('category/', CategoryList.as_view()),
-    path('category/<int:pk>/', CategoryDetail.as_view()),
-    path('quotations/', QuotationsList.as_view()),
-    path('quotations/<int:pk>/', QuotationsDetail.as_view()),
-    path('quotationitems/', QuotationItemsList.as_view()),
-    path('quotationitems/<int:pk>/', QuotationItemsDetail.as_view()),
-    path('invoices/', InvoicesList.as_view()),
-    path('invoices/<int:pk>/', InvoicesDetail.as_view()),
-    path('invoiceitems/', InvoiceItemsList.as_view()),
-    path('invoiceitems/<int:pk>/', InvoiceItemsDetail.as_view()),
-    path('timesheet/', TimeSheetList.as_view()),
-    path('timesheet/<int:pk>/', TimeSheetDetail.as_view()),
+    path('', include(router.urls)),
 ]

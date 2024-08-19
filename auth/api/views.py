@@ -1,168 +1,66 @@
-from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import viewsets
+from .models import (
+    SystemSettings, Employee, Inventory, Projects, Customer,
+    Category, Quotations, QuotationItems, Invoices, InvoiceItems, TimeSheet
+)
+from .serializers import (
+    SystemSettingsSerializer, EmployeeSerializer, InventorySerializer,
+    ProjectSerializer, CustomerSerializer, CategorySerializer,
+    QuotationsSerializer, QuotationItemsSerializer, InvoicesSerializer,
+    InvoiceItemsSerializer, TimeSheetSerializer
+)
 
-from .models import SystemSettings, Employee, Inventory, Projects, Customer, Category, Quotations, QuotationItems, Invoices, InvoiceItems, TimeSheet
-from .serializers import SystemSettingsSerializer, EmployeeSerializer, InventorySerializer, ProjectSerializer, CustomerSerializer, CategorySerializer, QuotationsSerializer, QuotationItemsSerializer, InvoicesSerializer, InvoiceItemsSerializer, TimeSheetSerializer
-
-
-# Create your views here.
-
-class SystemSettingsList(generics.ListAPIView):
+# SystemSettings ViewSet
+class SystemSettingsViewSet(viewsets.ModelViewSet):
+    queryset = SystemSettings.objects.all()
     serializer_class = SystemSettingsSerializer
 
-    def get_queryset(self):
-        queryset = SystemSettings.objects.all()        
-
-        return queryset
-    
-class SystemSettingsDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = SystemSettingsSerializer
-    queryset = SystemSettings.objects.all()        
-
-class EmployeeList(generics.ListCreateAPIView):
-    serializer_class = EmployeeSerializer
-
-    def get_queryset(self):
-        queryset = Employee.objects.all()
-
-        return queryset
-    
-class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = EmployeeSerializer
+# Employee ViewSet
+class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
 
-class InventoryList(generics.ListCreateAPIView):
-    serializer_class = InventorySerializer
-
-    def get_queryset(self):
-        queryset = Inventory.objects.all()
-
-        return queryset
-    
-class InventoryDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = InventorySerializer
+# Inventory ViewSet
+class InventoryViewSet(viewsets.ModelViewSet):
     queryset = Inventory.objects.all()
+    serializer_class = InventorySerializer
 
-class ProjectList(generics.ListCreateAPIView):
-    serializer_class = ProjectSerializer
-
-    def get_queryset(self):
-        queryset = Projects.objects.all()
-
-        return queryset
-    
-class ProjectDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = ProjectSerializer
+# Project ViewSet
+class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Projects.objects.all()
+    serializer_class = ProjectSerializer
 
-class CustomerList(generics.ListCreateAPIView):
+# Customer ViewSet
+class CustomerViewSet(viewsets.ModelViewSet):
+    queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
 
-    def get_queryset(self):
-        queryset = Customer.objects.all()
-
-        return queryset
-    
-class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = CustomerSerializer
-
-    def get_queryset(self):
-        queryset = Customer.objects.all()
-
-        return queryset
-    
-class CategoryList(generics.ListCreateAPIView):
+# Category ViewSet
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-    def get_queryset(self):
-        queryset = Category.objects.all()
-
-        return queryset
-    
-class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = CategorySerializer
-
-    def get_queryset(self):
-        queryset = Category.objects.all()
-
-        return queryset
-    
-class QuotationsList(generics.ListCreateAPIView):
+# Quotation ViewSet
+class QuotationViewSet(viewsets.ModelViewSet):
+    queryset = Quotations.objects.all()
     serializer_class = QuotationsSerializer
 
-    def get_queryset(self):
-        queryset = Quotations.objects.all()
-
-        return queryset
-    
-class QuotationsDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = QuotationsSerializer
-
-    def get_queryset(self):
-        queryset = Quotations.objects.all()
-
-        return queryset
-    
-class QuotationItemsList(generics.ListCreateAPIView):
+# QuotationItems ViewSet
+class QuotationItemsViewSet(viewsets.ModelViewSet):
+    queryset = QuotationItems.objects.all()
     serializer_class = QuotationItemsSerializer
 
-    def get_queryset(self):
-        queryset = QuotationItems.objects.all()
-
-        return queryset
-    
-class QuotationItemsDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = QuotationItemsSerializer
-
-    def get_queryset(self):
-        queryset = QuotationItems.objects.all()
-
-        return queryset
-    
-class InvoicesList(generics.ListCreateAPIView):
+# Invoices ViewSet
+class InvoicesViewSet(viewsets.ModelViewSet):
+    queryset = Invoices.objects.all()
     serializer_class = InvoicesSerializer
 
-    def get_queryset(self):
-        queryset = Invoices.objects.all()
-
-        return queryset
-    
-class InvoicesDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = InvoicesSerializer
-
-    def get_queryset(self):
-        queryset = Invoices.objects.all()
-
-        return queryset
-    
-class InvoiceItemsList(generics.ListCreateAPIView):
+# InvoiceItems ViewSet
+class InvoiceItemsViewSet(viewsets.ModelViewSet):
+    queryset = InvoiceItems.objects.all()
     serializer_class = InvoiceItemsSerializer
 
-    def get_queryset(self):
-        queryset = InvoiceItems.objects.all()
-
-        return queryset
-    
-class InvoiceItemsDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = InvoiceItemsSerializer
-
-    def get_queryset(self):
-        queryset = InvoiceItems.objects.all()
-
-        return queryset
-    
-class TimeSheetList(generics.ListCreateAPIView):
+# Timesheet ViewSet
+class TimesheetViewSet(viewsets.ModelViewSet):
+    queryset = TimeSheet.objects.all()
     serializer_class = TimeSheetSerializer
-
-    def get_queryset(self):
-        queryset = TimeSheet.objects.all()
-
-        return queryset
-    
-class TimeSheetDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = TimeSheetSerializer
-
-    def get_queryset(self):
-        queryset = TimeSheet.objects.all()
-
-        return queryset

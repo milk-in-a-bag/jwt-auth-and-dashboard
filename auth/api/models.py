@@ -122,7 +122,7 @@ class InvoiceItems(models.Model):
     inventory = models.ForeignKey(Inventory, on_delete=models.CASCADE, related_name='invoice_items')
 
     def __str__(self):
-        return self.inventory
+        return self.invoice
     
 class TimeSheet(models.Model):
     activity = models.CharField(max_length=100)
