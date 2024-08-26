@@ -1,0 +1,68 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}Employees{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/employee.css' %}">
+{% endblock %}
+
+{% block left %}
+    <a href="{% url 'home' %}">Overview</a>
+    <a href="employees" class="active">Employees</a>
+    <a href="inventory">Inventory</a>
+    <a href="projects">Projects</a>
+{% endblock %}
+
+{% block search-icon %}
+    <i class="fa-solid fa-plus" title="Add a new employee"></i>
+{% endblock %}
+
+<!--Cards-->
+
+{% block card-1-header %}
+    <h4>Salary commitments</h4>
+{% endblock %}
+
+{% block card-2-header %}
+    <h4>Departments</h4>
+{% endblock %}
+
+{% block card-3-header %}
+    <h4>Demographics</h4>
+{% endblock %}
+
+{% block card-4-header %}
+    <h4>Performance</h4>
+{% endblock %}
+
+
+<!--Employee table-->
+
+{% block sales-header %}
+    <h3>Top employees this month</h3>
+    <p>Performance ratings</p>
+{% endblock %}
+
+{% block sales %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+        </tr>
+        {% for employee in employees %}
+            <tr>
+                <td>{{ employee.employee_name }}</td>
+                <td>{{ employee.employee_email }}</td>
+                <td>{{ employee.personal_contact }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

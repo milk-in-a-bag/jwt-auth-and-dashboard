@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
-from .models import User
+from .models import *
+from api.models import *
 from .serializers import UserSerializer
 import jwt
 import datetime
@@ -64,7 +65,7 @@ class ValidateTokenView(APIView):
                 return Response({'valid': False})
         else:
             return Response({'valid': False})
-    '''
+
 class UserView(APIView):
     def get(self, request):
         auth_header = request.headers.get('Authorization')
@@ -85,6 +86,7 @@ class UserView(APIView):
         serializer = UserSerializer(user)
         return Response(serializer.data)
         
+        '''
 def token_required(view_func):
     @wraps(view_func)
     def _wrapped_view(request, *args, **kwargs):
@@ -108,10 +110,26 @@ def token_required(view_func):
 '''
 
 def home(request):
-    return render(request, 'users/home.html')
+    return render(request, 'home.html')
 
 def signup(request):
     return render(request, 'users/register.html')
 
 def login(request):
     return render(request, 'users/login.html')
+
+def employees(request):
+
+    employees = Employee.objects.all()
+
+    context = {
+        'employees': employees,
+    }
+
+    return render(request, 'users/employees.html', context)
+
+def inventory(request):
+    return render(request, 'users/inventory.html')
+
+def projects(request):
+    return render(request, 'users/projects.html')

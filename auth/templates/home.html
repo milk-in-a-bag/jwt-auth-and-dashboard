@@ -21,15 +21,19 @@
                     <p>Alicia Koch</p>
                 </div>
                 <div class="left-right">
-                    <a href="#" class="active">Overview</a>
-                    <a href="#">Products</a>
-                    <a href="#">Customers</a>
-                    <a href="#">Settings</a>
+                    {% block left %}
+                        <a href="{% url 'home' %}" class="active">Overview</a>
+                        <a href="employees">Employees</a>
+                        <a href="inventory">Inventory</a>
+                        <a href="projects">Projects</a>
+                    {% endblock %}
                 </div>
             </div>
             <div class="right">
                 <input type="text" placeholder="Search...">
-                <i class="fa-solid fa-user"></i>
+                {% block search-icon %}
+                    <i class="fa-solid fa-user"></i>
+                {% endblock %}
             </div>
         </div>
     </div>
@@ -67,7 +71,9 @@
     <div class="cards-wrapper">
         <div class="card">
             <div class="card-top">
-                <h4>Total revenue</h4>
+                {% block card-1-header %}
+                    <h4>Total revenue</h4>
+                {% endblock %}
                 <i class="fa-solid fa-dollar-sign"></i>
             </div>
             <div class="card-bottom">
@@ -77,17 +83,21 @@
         </div>
         <div class="card">
             <div class="card-top">
-                <h4>Subscriptions</h4>
+                {% block card-2-header %}
+                    <h4>Employees</h4>
+                {% endblock %}
                 <i class="fa-solid fa-people-group"></i>
             </div>
             <div class="card-bottom">
-                <h3>+2,350</h3>
+                <h3>14</h3>
                 <p>+24% from last month</p>
             </div>
         </div>
         <div class="card">
             <div class="card-top">
-                <h4>Sales</h4>
+                {% block card-3-header %}
+                    <h4>Sales</h4>
+                {% endblock %}
                 <i class="fa-solid fa-credit-card"></i>
             </div>
             <div class="card-bottom">
@@ -97,12 +107,14 @@
         </div>
         <div class="card">
             <div class="card-top">
-                <h4>Active now</h4>
+                {% block card-4-header %}
+                    <h4>Projects</h4>
+                {% endblock %}
                 <i class="fa-solid fa-arrow-trend-up"></i>
             </div>
             <div class="card-bottom">
                 <h3>+573</h3>
-                <p>+201 in the past hour</p>
+                <p>+201 in the past year</p>
             </div>
         </div>
     </div>
@@ -114,10 +126,13 @@
         </div>
         <div class="recent">
             <div class="recent-header">
-                <h3>Recent sales</h3>
-                <p>You made 256 sales this month</p>
+                {% block sales-header %}
+                    <h3>Recent sales</h3>
+                    <p>You made 256 sales this month</p>
+                {% endblock %}
             </div>
             <div class="recent-body">
+                {% block sales %}
                 <div class="sale">
                     <div class="circle">
 
@@ -178,6 +193,7 @@
                         <h4>+Kes 40,000</h4>
                     </div>
                 </div>
+                {% endblock %}
             </div>
         </div>
     </div>

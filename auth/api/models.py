@@ -24,8 +24,9 @@ class SystemSettings(models.Model):
 
 class Employee(models.Model):
     employee_name = models.CharField(max_length=100)
-    office_contact = models.CharField(max_length=10)
-    personal_contact = models.CharField(max_length=10)
+    employee_email = models.EmailField(max_length=256, unique=True)
+    office_contact = models.CharField(max_length=20)
+    personal_contact = models.CharField(max_length=20)
 
     def __str__(self):
         return self.employee_name
