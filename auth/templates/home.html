@@ -42,7 +42,9 @@
         <div class="dash">
             <div class="dash-header">
                 <div class="header-left">
-                    <h2>Dashboard</h2>
+                    {% block d-head %}
+                        <h2>Dashboard</h2>
+                    {% endblock %}
                 </div>
                 <div class="header-right">
                     <div class="date">
@@ -118,9 +120,11 @@
             </div>
         </div>
     </div>
+  
 
     <!--Charts-->
     <div class="data">
+        {% block data-table %}
         <div class="chart">
             <canvas id="myChart"></canvas>
         </div>
@@ -196,5 +200,13 @@
                 {% endblock %}
             </div>
         </div>
+        {% endblock %}
     </div>
+{% endblock %}
+
+{% block out-body %}
+    {% block c-form %}
+    {% endblock %}
+    {% block e-form %}
+    {% endblock %}
 {% endblock %}

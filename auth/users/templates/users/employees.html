@@ -4,12 +4,16 @@
 {% block title %}Employees{% endblock %}
 
 {% block js %}
-
+    <script src="{% static 'scripts/employees.js' %}" defer></script><script src="{% static 'scripts/home.js' %}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
 {% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'styles/home.css' %}">
     <link rel="stylesheet" href="{% static 'styles/employee.css' %}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
 {% endblock %}
 
 {% block left %}
@@ -21,6 +25,10 @@
 
 {% block search-icon %}
     <i class="fa-solid fa-plus" title="Add a new employee"></i>
+{% endblock %}
+
+{% block d-head %}
+    <h2>Employees</h2>
 {% endblock %}
 
 <!--Cards-->
@@ -41,28 +49,80 @@
     <h4>Performance</h4>
 {% endblock %}
 
+{% block c-form %}
+
+    <form method="POST" class="create-form">
+        {% csrf_token %}
+
+        <div class="form-head">
+            <i class="fa-solid fa-xmark"></i>
+            <h4>Add a new employee</h4>
+        </div>
+
+        <label for="name">Employee name:</label>
+        <input type="text" name="employee_name">
+        <label for="email">Email:</label>
+        <input type="email" name="employee_email">
+        <label for="ocontact">Office contact:</label>
+        <input type="text" name="office_contact">
+        <label for="pocontact">Personal contact:</label>
+        <input type="text" name="personal_contact">
+        <input type="submit" value="Add employee" class="submit">
+    </form>
+
+{% endblock %}
+
+{% block e-form %}
+
+<form action="" method="PUT" class="create-form edit-form">
+    {% csrf_token %}
+
+    <div class="form-head">
+        <i class="fa-solid fa-xmark editx"></i>
+        <h4>Edit employee</h4>
+    </div>
+
+    <label for="name">Employee name:</label>
+    <input type="text" name="employee_name" value="" id="name">
+    <label for="email">Email:</label>
+    <input type="email" name="employee_email" value="" id="email">
+    <label for="ocontact">Office contact:</label>
+    <input type="text" name="office_contact" value="" id="ocontact">
+    <label for="pocontact">Personal contact:</label>
+    <input type="text" name="personal_contact" value="" id="pocontact">
+    <input type="submit" value="Edit employee" class="submit">
+</form>
+
+
+{% endblock %}
 
 <!--Employee table-->
 
-{% block sales-header %}
-    <h3>Top employees this month</h3>
-    <p>Performance ratings</p>
-{% endblock %}
+{% block data-table %}
 
-{% block sales %}
-    <table>
+<table id="myTable" class="display">
+    <thead>
         <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>Contact</th>
+            <th>Office contact</th>
+            <th>Personal contact</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
+    </thead>
+    <tbody>
         {% for employee in employees %}
             <tr>
                 <td>{{ employee.employee_name }}</td>
                 <td>{{ employee.employee_email }}</td>
+                <td>{{ employee.office_contact }}</td>
                 <td>{{ employee.personal_contact }}</td>
+                <td><button class="edit-btn" data-id="{{ employee.id }}">Edit</button></td>
+                <td><button class="delete-btn">Delete</button></td>
             </tr>
         {% endfor %}
+    </tbody>
+</table>
 
-    </table>
 {% endblock %}

@@ -16,7 +16,13 @@
     {% endblock %}
 </head>
 <body>
-    {% block body %}
-    {% endblock %}
+    <div class="in-body">
+        {% block body %}
+        {% endblock %}
+    </div>
+    <div class="out-body">
+        {% block out-body %}
+        {% endblock %}
+    </div>
 </body>
 </html>

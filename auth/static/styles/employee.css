@@ -1,24 +1,141 @@
+body{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+i{
+    cursor: pointer;
+}
+
 .fa-plus{
     color: #939185;
-    cursor: pointer;
 }
 
 table{
     width: 100%;
     border-spacing: 0;
-    border: 1px solid grey;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 th, td{
     text-align: left;
-    border: 1px solid grey;
     padding: 5px;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 td{
     font-size: 14px;
 }
 
+
 tr:nth-child(even){
+    background-color: #ffffff !important;
+}
+
+table tr th:last-child {
+    border-right: none;
+}
+
+
+table tr td:last-child {
+    border-right: none;
+}
+
+
+#myTable_wrapper{
+    width: 100%;
+}
+
+/* create form */
+.create-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
     background-color: #f5f5f5;
+    width: 350px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    display: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-head > h4{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.fa-xmark{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    color: #939185;
+}
+
+.fa-xmark:hover{
+    color: #000000;
+}
+
+.create-form > label{
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.create-form > input{
+    width: 100%;
+    outline: none;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.submit{
+    padding: 10px 0 !important;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    background-color: #dadada;
+}
+
+.submit:hover{
+    background-color: #000000;
+    color: #f5f5f5;
+}
+
+td > button{
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.edit-btn{
+    padding: 6px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    background-color: 1px solid #939185;
+}
+
+.delete-btn{
+    padding: 6px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    background-color: 1px solid #939185;
+}
+
+td > button:hover{
+    background-color: #000000;
+    color: #ffffff;
 }
