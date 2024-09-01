@@ -51,7 +51,7 @@
 
 {% block c-form %}
 
-    <form method="POST" class="create-form">
+    <form method="POST" class="create-form" id="cform">
         {% csrf_token %}
 
         <div class="form-head">
@@ -74,7 +74,7 @@
 
 {% block e-form %}
 
-<form action="" method="PUT" class="create-form edit-form">
+<form action="" method="POST" class="create-form edit-form" id="eform">
     {% csrf_token %}
 
     <div class="form-head">
@@ -93,6 +93,26 @@
     <input type="submit" value="Edit employee" class="submit">
 </form>
 
+
+{% endblock %}
+
+{% block d-form %}
+
+<form action="" method="POST" class="create-form" id="dform">
+    {% csrf_token %}
+
+    <div class="form-head">
+        <i class="fa-solid fa-xmark delx"></i>
+        <h4>Delete employee</h4>
+    </div>
+
+    <p>Are you sure you want to delete employee <span class="empname"></span>?</p>
+
+    <div class="dform-btns">
+        <button class="cancel">Cancel</button>
+        <button class="delete" type="submit">Delete</button>
+    </div>
+</form>
 
 {% endblock %}
 
@@ -119,7 +139,7 @@
                 <td>{{ employee.office_contact }}</td>
                 <td>{{ employee.personal_contact }}</td>
                 <td><button class="edit-btn" data-id="{{ employee.id }}">Edit</button></td>
-                <td><button class="delete-btn">Delete</button></td>
+                <td><button class="delete-btn" data-id="{{ employee.id}}">Delete</button></td>
             </tr>
         {% endfor %}
     </tbody>

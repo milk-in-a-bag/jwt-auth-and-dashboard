@@ -135,6 +135,41 @@ td > button{
     background-color: 1px solid #939185;
 }
 
+.dform-btns{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.dform-btns{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cancel{
+    cursor: pointer;
+    width: 48%;
+    padding: 8px;
+    border: none;
+    background-color: #dadada;
+    border-radius: 3px;
+}
+
+.delete{
+    width: 48%;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #dadada;
+    border-radius: 3px;
+}
+
+.cancel:hover,
+.delete:hover{
+    background-color: #000000;
+    color: #f5f5f5;
+}
+
 td > button:hover{
     background-color: #000000;
     color: #ffffff;
