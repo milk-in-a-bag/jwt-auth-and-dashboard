@@ -17,20 +17,22 @@
         <div class="nav">
             <div class="left">
                 <div class="left-left">
-                    <i class="fa-solid fa-user"></i>
-                    <p>Alicia Koch</p>
+                    <h3>Qerp</h3>
                 </div>
                 <div class="left-right">
                     {% block left %}
-                        <a href="{% url 'home' %}" class="active">Overview</a>
+                        <a href="{% url 'home' %}">Overview</a>
                         <a href="employees">Employees</a>
                         <a href="inventory">Inventory</a>
                         <a href="projects">Projects</a>
+                        <a href="customers">Customers</a>
+                        <a href="quotations">Quotations</a>
+                        <a href="invoices">Invoices</a>
+                        <a href="timesheets">Timesheets</a>
                     {% endblock %}
                 </div>
             </div>
             <div class="right">
-                <input type="text" placeholder="Search...">
                 {% block search-icon %}
                     <i class="fa-solid fa-user"></i>
                 {% endblock %}

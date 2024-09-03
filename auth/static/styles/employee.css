@@ -1,6 +1,10 @@
-body{
-    overflow-y: scroll;
-    overflow-x: hidden;
+
+.left-right a:nth-child(1){
+    color: #939185;
+}
+
+.left-right a:nth-child(2){
+    color: #000000;
 }
 
 i{
@@ -9,6 +13,11 @@ i{
 
 .fa-plus{
     color: #939185;
+    margin-right: 15px;
+}
+
+.fa-plus:hover{
+    color: #000000;
 }
 
 table{

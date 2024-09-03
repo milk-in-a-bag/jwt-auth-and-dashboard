@@ -13,6 +13,7 @@ from django.http import JsonResponse
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -108,8 +109,9 @@ def token_required(view_func):
 
 @token_required
 '''
-
+@login_required(login_url="/signin")
 def home(request):
+    print(request.user)
     return render(request, 'home.html')
 
 def signup(request):

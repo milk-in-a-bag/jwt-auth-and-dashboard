@@ -47,15 +47,6 @@ datep.innerHTML = formattedDate
 
 /* toggle links script */
 
-const links = document.querySelectorAll('.left-right a');
-
-    links.forEach(link => {
-        link.addEventListener('click', function() {
-            links.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-
 const minilinks = document.querySelectorAll('.mini-nav a');
 
 minilinks.forEach(minilink => {

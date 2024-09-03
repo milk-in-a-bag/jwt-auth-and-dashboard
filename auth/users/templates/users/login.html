@@ -12,20 +12,19 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="ltext heading">Welcome to the Login Page</h1>
-
-    <p class="error-message"></p>
 
     <p class="ltext welcome">Welcome back</p>
 
     <form action="" method="POST" class="form">
+
+        <h2>Login to Qerp</h2>
         {% csrf_token %}
 
         <label for="mail">Email:</label>
         <input type="email" name="email" id="mail">
         <label for="pass">Password:</label>
         <input type="password" name="password" id="pass">
-        <input type="submit" class="submit">
+        <input type="submit" class="submit" value="Login">
     </form>
 
     <p class="ltext login">Dont have an account? Sign up <a href="{% url 'signup' %}">here</a></p>

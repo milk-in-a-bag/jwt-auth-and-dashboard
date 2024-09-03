@@ -4,8 +4,7 @@
 {% block title %}Employees{% endblock %}
 
 {% block js %}
-    <script src="{% static 'scripts/employees.js' %}" defer></script><script src="{% static 'scripts/home.js' %}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="{% static 'scripts/employees.js' %}" defer></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
 {% endblock %}
@@ -16,12 +15,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
 {% endblock %}
 
-{% block left %}
-    <a href="{% url 'home' %}">Overview</a>
-    <a href="employees" class="active">Employees</a>
-    <a href="inventory">Inventory</a>
-    <a href="projects">Projects</a>
-{% endblock %}
 
 {% block search-icon %}
     <i class="fa-solid fa-plus" title="Add a new employee"></i>

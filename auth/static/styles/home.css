@@ -7,7 +7,6 @@
 
 body{
     background-color: #dadada;
-    overflow: hidden;
 }
 
 .nav{
@@ -17,6 +16,7 @@ body{
     justify-content: space-between;
     padding: 5px;
     border: 1px solid #f5f5f5;
+    position: sticky;
 }
 
 .left, .left-left, .left-right{
@@ -24,25 +24,12 @@ body{
 }
 
 .left{
-    width: 50%;
+    width: 85%;
     justify-content: space-between;
 }
 
-.right input{
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: #f5f5f5;
-    outline: none;
-    width: 200px;
-}
-
-.right i{
-    margin-left: 10px;
-}
-
 .left-left{
-    width: 50%;
+    width: 20%;
 }
 
 .left-left p{
@@ -54,8 +41,13 @@ body{
 }
 
 .left-right{
-    width: 50%;
-    justify-content: space-between;
+    width: 60%;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.left-right a:nth-child(1){
+    color: #000000;
 }
 
 .left-right a{
@@ -67,11 +59,6 @@ body{
 .left-right a:hover{
     color: #000000;
 }
-
-.left-right a.active{
-    color: #000000;
-}
-
 
 /* Dashboard */
 

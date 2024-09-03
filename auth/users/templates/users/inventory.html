@@ -1,2 +1,147 @@
 {% extends 'home.html' %}
 {% load static %}
+
+{% block title %}Employees{% endblock %}
+
+{% block js %}
+    <script src="{% static 'scripts/inventory.js' %}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/employee.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/inventory.css' %}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
+{% endblock %}
+
+{% block search-icon %}
+    <i class="fa-solid fa-plus" title="Add a new employee"></i>
+{% endblock %}
+
+{% block d-head %}
+    <h2>Inventory</h2>
+{% endblock %}
+
+<!--Cards-->
+
+{% block card-1-header %}
+    <h4>Stock value</h4>
+{% endblock %}
+
+{% block card-2-header %}
+    <h4>Order frequency</h4>
+{% endblock %}
+
+{% block card-3-header %}
+    <h4>Dead stock</h4>
+{% endblock %}
+
+{% block card-4-header %}
+    <h4>Turnover rate</h4>
+{% endblock %}
+
+{% block c-form %}
+
+    <form method="POST" class="create-form" id="cform">
+        {% csrf_token %}
+
+        <div class="form-head">
+            <i class="fa-solid fa-xmark"></i>
+            <h4>Add a new employee</h4>
+        </div>
+
+        <label for="name">Employee name:</label>
+        <input type="text" name="employee_name">
+        <label for="email">Email:</label>
+        <input type="email" name="employee_email">
+        <label for="ocontact">Office contact:</label>
+        <input type="text" name="office_contact">
+        <label for="pocontact">Personal contact:</label>
+        <input type="text" name="personal_contact">
+        <input type="submit" value="Add employee" class="submit">
+    </form>
+
+{% endblock %}
+
+{% block e-form %}
+
+<form action="" method="POST" class="create-form edit-form" id="eform">
+    {% csrf_token %}
+
+    <div class="form-head">
+        <i class="fa-solid fa-xmark editx"></i>
+        <h4>Edit employee</h4>
+    </div>
+
+    <label for="name">Employee name:</label>
+    <input type="text" name="employee_name" value="" id="name">
+    <label for="email">Email:</label>
+    <input type="email" name="employee_email" value="" id="email">
+    <label for="ocontact">Office contact:</label>
+    <input type="text" name="office_contact" value="" id="ocontact">
+    <label for="pocontact">Personal contact:</label>
+    <input type="text" name="personal_contact" value="" id="pocontact">
+    <input type="submit" value="Edit employee" class="submit">
+</form>
+
+
+{% endblock %}
+
+{% block d-form %}
+
+<form action="" method="POST" class="create-form" id="dform">
+    {% csrf_token %}
+
+    <div class="form-head">
+        <i class="fa-solid fa-xmark delx"></i>
+        <h4>Delete employee</h4>
+    </div>
+
+    <p>Are you sure you want to delete employee <span class="empname"></span>?</p>
+
+    <div class="dform-btns">
+        <button class="cancel">Cancel</button>
+        <button class="delete" type="submit">Delete</button>
+    </div>
+</form>
+
+{% endblock %}
+
+<!--Employee table-->
+
+{% block data-table %}
+
+<table id="myTable" class="display">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Manufacturer</th>
+            <th>Manufacture date</th>
+            <th>Warranty expiry</th>
+            <th>Serial number</th>
+            <th>Status</th>
+            <th>Category</th>
+            <th>Landing price</th>
+            <th>Selling price</th>
+            <th>Discounted price</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td>{{ employee.employee_name }}</td>
+                <td>{{ employee.employee_email }}</td>
+                <td>{{ employee.office_contact }}</td>
+                <td>{{ employee.personal_contact }}</td>
+                <td><button class="edit-btn" data-id="{{ employee.id }}">Edit</button></td>
+                <td><button class="delete-btn" data-id="{{ employee.id}}">Delete</button></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
